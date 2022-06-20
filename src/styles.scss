@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+@import "/node_modules/bootstrap/scss/bootstrap-utilities.scss";
+@import "/node_modules/bootstrap/scss/bootstrap-reboot.scss";
+@import "/node_modules/bootstrap/scss/bootstrap-grid.scss";
+
+@import "~normalize.css";
+
+.mt-60 {
+  margin-top: 60px;
+}
+
+table {
+  width: 100%;
+}
+
+.snack-bar-error {
+  background-color: #ee7818;
+}
+
+.snack-bar-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  font-weight: bold;
+  height: 15%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+}
+
+.spinner {
+  margin: 0 auto;
+}

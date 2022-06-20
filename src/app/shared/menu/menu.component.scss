@@ -1,0 +1,13 @@
+.menu {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+}
+
+button:hover {
+  background-color: #c1517e;
+}
+.active-link {
+  background-color: #c1517e;
+}

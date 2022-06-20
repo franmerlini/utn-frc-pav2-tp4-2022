@@ -1,0 +1,103 @@
+<div class="col">
+  <mat-card-title>{{ titulo }}</mat-card-title>
+  <mat-divider></mat-divider>
+</div>
+
+<div class="col mt-3">
+  <form *ngIf="!opcionEliminar" [formGroup]="form" class="d-flex flex-column">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input type="text" matInput formControlName="txtNombre" />
+      <mat-error
+        *ngIf="txtNombre?.invalid && (txtNombre?.dirty || txtNombre?.touched) && txtNombre?.errors?.['required']"
+      >
+        Campo es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Precio</mat-label>
+      <input type="number" matInput formControlName="txtPrecio" />
+      <mat-error
+        *ngIf="txtPrecio?.invalid && (txtPrecio?.dirty || txtPrecio?.touched) && txtPrecio?.errors?.['required']"
+      >
+        Campo es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Stock</mat-label>
+      <input type="number" matInput formControlName="txtStock" />
+      <mat-error
+        *ngIf="txtStock?.invalid && (txtStock?.dirty || txtStock?.touched) && txtStock?.errors?.['required']"
+      >
+        Campo es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Codigo de barra</mat-label>
+      <input type="number" matInput formControlName="txtCodigoBarra" />
+      <mat-error
+        *ngIf="txtCodigoBarra?.invalid && (txtCodigoBarra?.dirty || txtCodigoBarra?.touched) && txtCodigoBarra?.errors?.['required']"
+      >
+        Campo es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Familia</mat-label>
+      <mat-select formControlName="cboFamilia">
+        <mat-option
+          *ngFor="let articuloFamilia of articuloFamilias"
+          [value]="articuloFamilia.IdArticuloFamilia"
+        >
+          {{ articuloFamilia.Nombre }}
+        </mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="cboFamilia?.invalid && (cboFamilia?.dirty || cboFamilia?.touched) && cboFamilia?.errors?.['required']"
+      >
+        Campo es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Fecha de alta</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dpFechaAlta" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Activo</mat-label>
+      <mat-select formControlName="cboActivo">
+        <mat-option *ngFor="let option of optionsActivo" [value]="option.value">
+          {{ option.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="cboActivo?.invalid && (cboActivo?.dirty || cboActivo?.touched) && cboActivo?.errors?.['required']"
+      >
+        Campo es requerido
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+  <div mat-dialog-actions class="justify-content-end">
+    <button *ngIf="!opcionVer" mat-raised-button (click)="cancelar()">
+      Cancelar
+    </button>
+    <button
+      *ngIf="!opcionVer"
+      mat-raised-button
+      color="primary"
+      (click)="aceptar()"
+    >
+      Aceptar
+    </button>
+    <button *ngIf="opcionVer" mat-raised-button (click)="cancelar()">
+      Cerrar
+    </button>
+  </div>
+</div>
